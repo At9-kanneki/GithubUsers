@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubUsers</string>
+    <string name="null_text">null</string>
+    <string name="staff">STAFF</string>
 </resources>
