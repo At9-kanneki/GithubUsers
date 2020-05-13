@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kanneki.githubusers.R
+import com.kanneki.githubusers.helper.Constant
 import com.kanneki.githubusers.helper.FakeData
+import com.kanneki.githubusers.module.UserModule
 import com.kanneki.githubusers.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 
@@ -29,9 +31,11 @@ class MainActivity : AppCompatActivity() {
         val headerView = LayoutInflater.from(this).inflate(R.layout.recyclerview_main_heard, recyclerview, false)
         mAdapter.addHeaderView(headerView)
 
-        mAdapter.setOnItemClickListener { adapter, view, position ->
+        mAdapter.setOnItemClickListener { adapter, _, position ->
+            val item = adapter.getItem(position) as? UserModule
 
             val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(Constant.extraNameKey, item?.login)
             startActivity(intent)
         }
     }

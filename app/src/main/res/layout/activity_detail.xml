@@ -3,7 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -26,7 +39,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarT"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -98,6 +111,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
         android:text="@string/null_text"
+        app:layout_constraintBottom_toTopOf="@+id/isAdmin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/userNameIcon"
         app:layout_constraintTop_toTopOf="@+id/userNameIcon" />
@@ -112,6 +126,7 @@
         android:text="@string/staff"
         android:textColor="@android:color/white"
         android:textSize="12sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/userNameIcon"
         app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
@@ -129,11 +144,12 @@
         app:layout_constraintTop_toTopOf="@+id/locationIcon" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/linkText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
+        android:autoLink="web"
         android:text="@string/null_text"
         app:layout_constraintBottom_toBottomOf="@+id/linkicon"
         app:layout_constraintEnd_toEndOf="parent"
