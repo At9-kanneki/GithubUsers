@@ -2,4 +2,5 @@
     <string name="app_name">GithubUsers</string>
     <string name="null_text">null</string>
     <string name="staff">STAFF</string>
+    <string name="main_title">Users</string>
 </resources>

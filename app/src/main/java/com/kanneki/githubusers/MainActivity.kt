@@ -2,6 +2,7 @@ package com.kanneki.githubusers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kanneki.githubusers.helper.FakeData
 import com.kanneki.githubusers.ui.main.MainRecyclerViewAdapter
@@ -22,5 +23,8 @@ class MainActivity : AppCompatActivity() {
             adapter = mAdapter
             layoutManager = GridLayoutManager(this@MainActivity, 1)
         }
+
+        val headerView = LayoutInflater.from(this).inflate(R.layout.recyclerview_main_heard, recyclerview, false)
+        mAdapter.addHeaderView(headerView)
     }
 }
