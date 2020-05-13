@@ -3,21 +3,30 @@ package com.kanneki.githubusers.ui.detail
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.kanneki.githubusers.R
+import com.kanneki.githubusers.helper.Constant
 import com.kanneki.githubusers.helper.FakeData
 import com.kanneki.githubusers.module.UserDetailModule
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity: AppCompatActivity() {
 
+    private val viewModel = DetailViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         initView()
-        setView(FakeData.detailData)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setView()
+        viewModel.getData(intent.getStringExtra(Constant.extraNameKey))
     }
 
     private fun initView() {
@@ -25,6 +34,9 @@ class DetailActivity: AppCompatActivity() {
         toolbarT.setNavigationOnClickListener {
             finish()
         }
+        viewModel.getDetailData.observe(this, Observer { data ->
+            setView(data)
+        })
     }
 
 
