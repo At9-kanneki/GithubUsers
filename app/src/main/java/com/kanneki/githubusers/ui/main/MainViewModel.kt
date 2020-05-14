@@ -30,6 +30,7 @@ class MainViewModel : ViewModel() {
                 }
 
                 override fun onError(e: Throwable?) {
+                    dataList.postValue(null)
                 }
 
             })

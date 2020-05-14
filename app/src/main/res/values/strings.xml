@@ -3,4 +3,6 @@
     <string name="null_text">null</string>
     <string name="staff">STAFF</string>
     <string name="main_title">Users</string>
+    <string name="recyclerview_error">無法取得資料!</string>
+    <string name="recyclerview_empty">無資料</string>
 </resources>

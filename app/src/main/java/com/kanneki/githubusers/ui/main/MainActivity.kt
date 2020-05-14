@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kanneki.githubusers.R
 import com.kanneki.githubusers.helper.Constant
 import com.kanneki.githubusers.helper.FakeData
+import com.kanneki.githubusers.helper.SetAdapterView
 import com.kanneki.githubusers.module.UserModule
 import com.kanneki.githubusers.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_recyclerview.*
@@ -22,10 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
         initView()
-    }
-
-    override fun onStart() {
-        super.onStart()
+        SetAdapterView.showLoadView(mAdapter)
         viewModel.getAll()
     }
 
@@ -46,8 +44,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         viewModel.getDataList.observe(this, Observer { data ->
             mAdapter.setNewData(data)
+            when{
+                data == null -> SetAdapterView.showErrorView(mAdapter)
+                data.isEmpty() -> SetAdapterView.showEmptyView(mAdapter)
+            } // end when
         })
     }
 }
